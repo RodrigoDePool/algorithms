@@ -1,3 +1,5 @@
+$(shell mkdir -p exe)
+
 GRAPH_DIR := ./algorithms/graphs
 GRAPH := dfs bfs
 
@@ -8,9 +10,8 @@ GRAPH := dfs bfs
 all: $(GRAPH)
 
 %: $(GRAPH_DIR)/%.cpp
-	g++ -o exe/$@ $^
+	g++ -no-pie -o exe/$@ $^
 	
 
 clean:
 	rm -f exe/*
-	
