@@ -1,5 +1,6 @@
 $(shell mkdir -p exe)
 
+FLAGS := -no-pie -g
 GRAPH_DIR := ./algorithms/graphs
 GRAPH := dfs bfs
 
@@ -10,7 +11,7 @@ GRAPH := dfs bfs
 all: $(GRAPH)
 
 %: $(GRAPH_DIR)/%.cpp
-	g++ -no-pie -o exe/$@ $^
+	g++ $(FLAGS) -o exe/$@ $^
 	
 
 clean:
