@@ -11,7 +11,7 @@ typedef tuple<int, int, int> tupla;
 
 map <int, int> cands;
 vector<string>candsnames;
-void resolver(vector<queue<int>> entrada){
+void resolver(vector<queue<int>> entrada, int size){
     do{
         //TODO MAL
     //     int minv=0;
@@ -45,7 +45,8 @@ void resolver(vector<queue<int>> entrada){
     //     for(queue<int> q: entrada){
     //         // TODO contar bla bla bla
     //     }
-    }while();
+    return ;
+    }while(true);
 
     return;
 }
@@ -94,8 +95,7 @@ int main(){
             }
             numvotos++;
         }
-
-        resolver(entradas);
+        resolver(entradas, numvotos);
     }
     return 0;
 }
