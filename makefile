@@ -1,6 +1,5 @@
-$(shell mkdir -p exe)
+FLAGS := -g -lm -lcrypt -O2 -pipe -DONLINE_JUDGE
 
-FLAGS := -lm -lcrypt -O2 -pipe -DONLINE_JUDGE
 GRAPH_DIR := ./algorithms/graphs
 GRAPH := dfs bfs
 
@@ -10,17 +9,16 @@ UVA := 10196 10142 10033 10137
 
 all: $(GRAPH) $(UVA)
 	clear
-	./exe/10196 < data
-	# ./exe/10033 < data
+	./10142 <data
 
 %: $(GRAPH_DIR)/%.cpp
-	g++ $(FLAGS) -o exe/$@ $^
+	g++ $(FLAGS) -o $@ $^
 	
 
 
 %: $(UVA_DIR)/%.cpp
-	g++ $(FLAGS) -o exe/$@ $^
+	g++ $(FLAGS) -o $@ $^
 	
 
 clean:
-	rm -f exe/*
+	rm -f  $(GRAPH) $(UVA)

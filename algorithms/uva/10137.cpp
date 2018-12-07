@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstdio>
 #include <vector>
+#include <math.h>
 
 using namespace std;
 
@@ -8,8 +9,9 @@ using namespace std;
 int resolver(int n, vector<int> input100, int suma){
     int i, times=0;
     int  solup=0, soldown=0;
-    int media = suma/n;
+    int media = round((0.0+suma)/n);
     for(int i=0; i<n; i++){
+        // int diff = input100[i]*n-suma;
         int diff = input100[i]-media;
         if(diff <= 0){
             soldown += -diff;
@@ -19,9 +21,11 @@ int resolver(int n, vector<int> input100, int suma){
     }
     int sol;
     if(solup > soldown)
-        sol = soldown;
+        // sol = soldown/n;
+        sol=soldown;
     else
-        sol = solup;
+        sol=solup;
+        // sol = solup/n;
     printf("$%.2f", double(sol)/100);
     return 0;
 }
