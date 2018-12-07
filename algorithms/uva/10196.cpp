@@ -79,7 +79,7 @@ bool sr(int i, int j, set<char> stra){
 }
 
 bool cp(int i, int j, char p){
-    if(p=='p' && i-1>0){
+    if(p=='p' && i-1>=0){
         if(j-1>=0 && tab[i-1][j-1] == p) return true;
         if(j+1<8 && tab[i-1][j+1] == p) return true;
     }
@@ -166,6 +166,11 @@ void resolver(int num){
 
 bool leertablero(){    
     bool end=true;
+    bking.first=-1;
+    bking.second=-1;
+    wking.first=-1;
+    wking.second=-1;
+    
     for(int i=0; i<8;i++){
         for(int j=0;j<8;j++){
             cin >> tab[i][j];
@@ -177,12 +182,8 @@ bool leertablero(){
                 wking.first=i;
                 wking.second=j;
             }
-            // cout << tab[i][j];
         }
-        // cout << endl;
     }
-    // cout << endl;
-
     return !end;
 }
 
