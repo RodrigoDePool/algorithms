@@ -1,4 +1,4 @@
-FLAGS := -g -lm -lcrypt -O2 -pipe -DONLINE_JUDGE
+FLAGS := -g -lm -lcrypt  -pipe -DONLINE_JUDGE
 
 GRAPH_DIR := ./algorithms/graphs
 GRAPH := dfs bfs
@@ -9,8 +9,8 @@ UVA := 10196 10142 10033 10137
 
 all: $(GRAPH) $(UVA)
 	clear
-	# ./10142 <data
-	./10137 < data
+	./10142 <data2
+	# ./10137 < data
 	
 %: $(GRAPH_DIR)/%.cpp
 	g++ $(FLAGS) -o $@ $^

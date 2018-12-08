@@ -10,52 +10,58 @@
 using namespace std;
 typedef tuple<int, int, int> tupla;
 
-
-void resolver(set<int> cands, vector<string> candsnames, vector<vector<int>> entrada, int size){
-    map<int, int> votes;
-    //Conteo de votos
+int minaux;
+int maxv;
+int maxcand;
+set<int> mincands;
+unordered_map<int, int> contarVotos(set<int> cands, vector<queue<int>>entrada, int size){
+    unordered_map<int, int> votes;
+    // Conteo de votos, ademas saca los maxvs y minvs
+    // Deja en maxcand uno de los maximos  
     for(set<int>::iterator ptr=cands.begin(); ptr!=cands.end(); ptr++)
         votes[*ptr]=0;
+    maxv=-1;
     for(int i=0;i<size;i++){
-        vector<int> q = entrada[i];
-        int j;
-        for(j=0;cands.count(q[j])!=1;j++);
-        votes[q[j]]++;
-    }
-    int total=size;
-    int maxv=-1;
-    vector<int> maxc;
-    int minv=1001;
-    vector<int> minc;
-    for(map<int, int>::iterator ptr=votes.begin(); ptr!=votes.end(); ptr++){
-        if(ptr->second < minv){
-            minv = ptr->second;
-            minc.clear();
+        queue<int> q = entrada[i];
+        while(cands.count(q.front())!=1)
+            q.pop();
+        votes[q.front()]++;
+        if(votes[q.front()]>maxv){
+            maxv=votes[q.front()];
+            maxcand=q.front();
         }
-        if(ptr->second == minv)
-            minc.push_back(ptr->first);
+        if(i==0 || votes[q.front()]<votes[minaux]){
+            minaux=q.front();
+            mincands.clear();
+        }
+        if(votes[q.front()]==votes[minaux])
+            mincands.insert(i);
+    }
+    return votes;
+}
 
-        if(ptr->second > maxv){
-            maxv = ptr->second;
-            maxc.clear();
-        }
-        if(ptr->second == maxv)
-            maxc.push_back(ptr->first);
-    }
-    if(maxv == minv)
+void resolver(set<int> cands, vector<string> candsnames, vector<queue<int>> entrada, int size){
+    unordered_map<int, int> votes = contarVotos(cands, entrada, size);
+    int total=size;
+    if(maxv == votes[minaux]){
         /*Empate, imprimios todos*/
-        for(vector<int>:: iterator ptr=minc.begin(); ptr<minc.end(); ptr++){
+        for(set<int>:: iterator ptr=cands.begin(); ptr!=cands.end(); ptr++)
             cout << candsnames[*ptr] << endl;
         return;
     }
     if(double(maxv)/total > 0.5){
         /*Gana el maximo*/
-        cout<<candsnames[maxc[0]]<<endl;
+        cout<<candsnames[maxcand]<<endl;
         return;
     }
-    /*No gana nadie, eliminamos los minimos*/
-    for(vector<int>:: iterator ptr=minc.begin(); ptr<minc.end(); ptr++)
-        cands.erase(*ptr);
+    // No hay ganador, eliminamos a los minimos
+    for(int i:mincands){
+        queue<int> q = entrada[i];
+        // Eliminamos el candidato de los votos y la lista de cands
+        cands.erase(q.front());
+        q.pop();
+    }
+    mincands.clear();
     return resolver(cands, candsnames, entrada, size);
 }
 
@@ -79,7 +85,7 @@ int main(){
             // cout<< j << " " << candsnames[j] << endl;
         }
 
-        vector <vector<int>> entradas(1000);
+        vector <queue<int>> entradas(1000);
         int numvotos=0;
         string line;
         if(cin)
@@ -90,7 +96,7 @@ int main(){
             istringstream iss(line);
             string item;
             while(getline(iss, item, ' ')){
-                entradas[numvotos].push_back(stoi(item)-1);
+                entradas[numvotos].push(stoi(item)-1);
                 // cout << item << " ";
             }
             // cout << endl;
