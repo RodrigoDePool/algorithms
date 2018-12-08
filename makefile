@@ -1,13 +1,12 @@
 FLAGS := -g -lm -lcrypt  -pipe -DONLINE_JUDGE
 
 GRAPH_DIR := ./algorithms/graphs
-GRAPH := dfs bfs
-
 UVA_DIR := ./algorithms/uva
-UVA := 10196 10142 10033 10137
+
+EXE := dfs bfs 10196 10142 10033 10137
 
 
-all: $(GRAPH) $(UVA)
+all: $(EXE)
 	clear
 	./10137 < data > salida
 	diff salida salidaEsperada10137
@@ -22,4 +21,4 @@ all: $(GRAPH) $(UVA)
 	
 
 clean:
-	rm -f  $(GRAPH) $(UVA)
+	rm -f  $(EXE)
