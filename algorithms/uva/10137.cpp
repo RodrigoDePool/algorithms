@@ -9,23 +9,21 @@ using namespace std;
 int resolver(int n, vector<int> input100, int suma){
     int i, times=0;
     int  solup=0, soldown=0;
-    int media = round((0.0+suma)/n);
+    int c = ceil((0.0+suma)/n);
+    int f = floor((0.0+suma)/n);
+    // cout << c << " " << f << endl;
     for(int i=0; i<n; i++){
-        // int diff = input100[i]*n-suma;
-        int diff = input100[i]-media;
-        if(diff <= 0){
-            soldown += -diff;
-        }else{
-            solup += diff;
+        if((input100[i]-c)>0){
+            solup += (input100[i]-c);
+        }else if((f-input100[i])>0){
+            soldown += (f-input100[i]);
         }
     }
     int sol;
     if(solup > soldown)
-        // sol = soldown/n;
-        sol=soldown;
-    else
         sol=solup;
-        // sol = solup/n;
+    else
+        sol=soldown;
     printf("$%.2f", double(sol)/100);
     return 0;
 }

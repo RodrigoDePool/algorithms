@@ -9,7 +9,8 @@ UVA := 10196 10142 10033 10137
 
 all: $(GRAPH) $(UVA)
 	clear
-	./10137 < data
+	./10137 < data > salida
+	diff salida salidaEsperada10137
 	
 %: $(GRAPH_DIR)/%.cpp
 	g++ $(FLAGS) -o $@ $^
