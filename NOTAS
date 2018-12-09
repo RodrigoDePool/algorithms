@@ -1,0 +1,6 @@
+Sobre la precision:
+* Si queremos obtener un input decimal con precision exacta hay que ser MUY cuidadosos.
+  Un ejemplo de esto es el ejercicio 10137, en ese caso necesitabamos dos decimales de 
+  precision. Lo que se hace es recibir el input, multiplicarlo por 100 para trabajar en
+  enteros y hacerle un round por posible caso de  perdida de precision en la lectura.
+  Se quiere leer 1.77 -> (input) 1.769999 -> (*100) 176.99 -> (round) 177

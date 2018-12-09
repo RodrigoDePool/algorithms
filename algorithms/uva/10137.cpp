@@ -40,7 +40,7 @@ int main(){
         suma = 0;
         for(int i=0; i<n; i++){
             cin >> aux;
-            input100[i] = int(aux*100);
+            input100[i] = int(round(aux*100));
             suma += input100[i];
         }
         resolver(n, input100, suma);
