@@ -3,14 +3,12 @@ FLAGS := -g -lm -lcrypt  -pipe -DONLINE_JUDGE
 GRAPH_DIR := ./algorithms/graphs
 UVA_DIR := ./algorithms/uva
 
-EXE := dfs bfs 10196 10142 10033 10137
+EXE := dfs bfs 10196 10142 10033 10137 10107
 
 
 all: $(EXE)
 	clear
-	./10137 < data > salida
-	diff salida salidaEsperada10137
-	
+
 %: $(GRAPH_DIR)/%.cpp
 	g++ $(FLAGS) -o $@ $^
 	
