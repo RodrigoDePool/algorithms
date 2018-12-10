@@ -11,6 +11,7 @@ int resolver(int n, vector<int> input100, int suma){
     int  solup=0, soldown=0;
     int c = ceil((0.0+suma)/n);
     int f = floor((0.0+suma)/n);
+    // cout << suma << endl;
     // cout << c << " " << f << endl;
     for(int i=0; i<n; i++){
         if((input100[i]-c)>0){
@@ -39,7 +40,7 @@ int main(){
         suma = 0;
         for(int i=0; i<n; i++){
             cin >> aux;
-            input100[i] = int(aux*100);
+            input100[i] = int(round(aux*100));
             suma += input100[i];
         }
         resolver(n, input100, suma);

@@ -3,7 +3,7 @@
 #include <cstdio>
 using namespace std;
 int main(){
-    int ma, mb, mc;
+    double ma, mb, mc;
     // DA WRONG ANSWER!!!!
     double ar, a;
 
