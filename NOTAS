@@ -4,3 +4,4 @@ Sobre la precision:
   precision. Lo que se hace es recibir el input, multiplicarlo por 100 para trabajar en
   enteros y hacerle un round por posible caso de  perdida de precision en la lectura.
   Se quiere leer 1.77 -> (input) 1.769999 -> (*100) 176.99 -> (round) 177
+* Los heaps funcionan en logn  :D (priority q son heaps)
