@@ -4,7 +4,6 @@
 using namespace std;
 int main(){
     double ma, mb, mc;
-    // DA WRONG ANSWER!!!!
     double ar, a;
 
     while(cin >> ma >> mb >> mc){
