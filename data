@@ -1,7 +1,31 @@
 2
-10
+World Cup 1998 - Group A
 4
-14
+Brazil
+Norway
+Morocco
+Scotland
 6
+Brazil#2@1#Scotland
+Norway#2@2#Morocco
+Scotland#1@1#Norway
+Brazil#3@0#Morocco
+Morocco#3@0#Scotland
+Brazil#1@2#Norway
+Some strange tournament
+6
+Team A
+Team B
+Team C
+Team D
+Team e
+Team F
 8
-12
+Team A#1@1#Team B
+Team A#2@2#Team C
+Team A#1@1#Team D
+Team e#2@0#Team C
+Team e#1@2#Team D
+Team e#0@0#Team F
+Team F#3@1#Team D
+Team C#1@0#Team F
