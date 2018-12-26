@@ -1,9 +1,9 @@
-FLAGS := -g -lm -lcrypt  -pipe -DONLINE_JUDGE
+FLAGS := -g -lm -lcrypt -std=c++11 -pipe -DONLINE_JUDGE
 
 GRAPH_DIR := ./algorithms/graphs
 UVA_DIR := ./algorithms/uva
 
-EXE := dfs bfs 10196 10142 10033 10137 10107 10347 524 482 673 10226 10194 10901
+EXE := dfs bfs 108 10196 10142 10033 10137 10107 10347 524 482 673 10226 10194 10901
 
 all: $(EXE)
 
