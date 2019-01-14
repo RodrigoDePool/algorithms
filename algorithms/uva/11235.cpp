@@ -12,6 +12,7 @@ int main(){
         unordered_map<int, int> freqs;
         vector<int> differents;
         vector<int> all;
+
         int prev = INT_MIN;
         int freq = 0;
         for(int i=0; i<n; i++){
@@ -21,8 +22,8 @@ int main(){
             if(aux!=prev){
                 freq = 0;
                 differents.push_back(aux);
-            }else
-                freq++;
+            }
+            freq++;
             freqs[aux] = freq;
             prev = aux; 
         }
@@ -45,11 +46,14 @@ int main(){
             }
             if(firstf>lastf) maxf=firstf;
             else maxf=lastf;
-            from++;
-            while(from<to){
-                if(freqs[all[from]]>maxf)
-                    maxf=freqs[all[from]];
+
+            first=all[from];
+            last=all[to];
+            while(first<last){
+                if(freqs[first]>maxf)
+                    maxf=freqs[first];
                 from++;
+                first=all[first];
             } 
             cout << maxf<<endl;
         }
