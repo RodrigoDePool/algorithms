@@ -15,4 +15,4 @@ all: $(EXE)
 	g++ $(FLAGS) -o $@ $^
 
 clean:
-	rm -f  $(EXE)
+	rm -f  $(EXE) input output
