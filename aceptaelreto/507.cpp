@@ -2,19 +2,18 @@
 #include <vector>
 #include <algorithm>
 using namespace std;
-// NO FUNCIONA IDK WHY
 int main(){
-    long n,w;
+    long long n,w;
     cin >> n >> w;
     while(n>0 || w>0){
-        vector<long> ps(n);
-        for(long i=0; i<n; i++)
+        vector<long long> ps(n);
+        for(long long i=0; i<n; i++)
             cin >> ps[i];
         sort(ps.begin(), ps.end());
-        long count=0;
-        for(long i=0;i<n-1;i++){
+        long long count=0;
+        for(long long i=0;i<n-1;i++){
             if(ps[i]+ps[i+1]>w) break;
-            vector<long>::iterator it=lower_bound(
+            vector<long long>::iterator it=lower_bound(
                                                  ps.begin()+i+1, 
                                                  ps.end(),
                                                  w-ps[i]);
