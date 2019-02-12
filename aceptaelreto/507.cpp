@@ -18,10 +18,11 @@ int main(){
                                                  ps.begin()+i+1, 
                                                  ps.end(),
                                                  w-ps[i]);
+            while(it!=ps.end() && ps[i]+*it==w)
+                it++;
+
             if(it==ps.end()){
                 count+=(ps.end()-ps.begin()-i-1);
-            }else if(ps[i]+*it==w){
-                count += (it-ps.begin()-i);   
             }else{
                 count += (it-ps.begin()-i-1);   
             }
