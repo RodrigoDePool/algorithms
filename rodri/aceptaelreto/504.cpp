@@ -69,7 +69,7 @@ pii dijkstra(int src, int dst, vector<pii> adj[], int n, int pos)
     vector<bool> visited(n + 1, false);
     vector<int> dist(n + 1, INT_MAX);
     vector<int> steps(n + 1, 0);
-    int aux=INT_MAX;
+    int aux = INT_MAX;
 
     priority_queue<pii, vector<pii>, greater<pii>> q;
     q.push(make_pair(0, src));
@@ -82,15 +82,15 @@ pii dijkstra(int src, int dst, vector<pii> adj[], int n, int pos)
         q.pop();
         if (visited[a])
             continue;
-        else if (a == dst){
+        else if (a == dst)
+        {
             return pii(dist[dst], steps[dst]);
         }
         visited[a] = true;
         for (auto u : adj[a])
         {
             int b = u.second, weight = u.first;
-            if (dist[b] > dist[a] + weight
-                || (dist[b] == dist[a] + weight && steps[b]>steps[a]+1))
+            if (dist[b] > dist[a] + weight || (dist[b] == dist[a] + weight && steps[b] > steps[a] + 1))
             {
                 steps[b] = steps[a] + 1;
                 dist[b] = dist[a] + weight;
@@ -111,8 +111,8 @@ int main()
         for (int i = 0; i < c; i++)
         {
             cin >> g1 >> g2 >> w;
-            adj[g1].push_back(pair<int,int>(w, g2));
-            adj[g2].push_back(pair<int,int>(w, g1));
+            adj[g1].push_back(pair<int, int>(w, g2));
+            adj[g2].push_back(pair<int, int>(w, g1));
         }
         int k, src, dst;
         cin >> k;
@@ -120,12 +120,15 @@ int main()
         {
             cin >> src >> dst;
             pii sol2 = dijkstra1(src, dst, adj, n);
-            if(sol2.first == -1){
+            if (sol2.first == -1)
+            {
                 cout << "SIN CAMINO" << endl;
-            }else{
+            }
+            else
+            {
                 pii sol1 = dijkstra(src, dst, adj, n, sol2.first);
                 cout << sol1.first << " ";
-                if(sol1.second == sol2.first)
+                if (sol1.second == sol2.first)
                     cout << "SI" << endl;
                 else
                     cout << "NO" << endl;
