@@ -10,9 +10,8 @@ def minimum_path_sum(root):
     if not root:
         return -1
     q = Queue.queue()
-    values = Queue.queue()
-    q.put(root)
-    values.put(0)
+    q.put(root, 0)
+    
     level, answer, min_value = -1, -1, float('int')
     while q:
         size = q.size()
@@ -20,19 +19,18 @@ def minimum_path_sum(root):
 
         while size:
             size -= 1
-            node = q.pop()
-            curr_value = values.pop()
-
+            node, curr_value = q.pop()
+      
             node.val += curr_value
             if node.val < min_value:
                 min_value = node.val
                 answer = level
 
             if not node.left:
-                q.put(node.left)
-                values.put(node.val)
+                q.put(node.left, node.val)
+                
             if not node.right:
-                q.put(node.right)
-                values.put(node.val)
+                q.put(node.right, node.val)
+                
 
     return answer
