@@ -1,32 +1,40 @@
-#include <unordered_map>
-#include <cstdio>
-#include <iostream>
 #include <string>
+#include <iostream>
+#include <unordered_map>
 using namespace std;
-int main(){
-    int cases, chars, lines, cents;
-    char paid;
-    cin >> cases;
-    for(int i=0; i<cases;i++){
-	unordered_map<char,int> paidChars;
-	cin >> chars;
-	for(int j=0; j<chars;j++){
-	    cin >> paid >> cents;
-	    paidChars[paid]=cents;
-	}
-	cin >> lines;
-	cin.ignore();
-	int total=0;
-	for(int j=0;j<lines;j++){
-	    string line;
-	    getline(cin, line);
-	    for(int k=0;k<line.length();k++){
-		if(paidChars.count(line[k])==1){
-		    total+=paidChars[line[k]];
-		}
-	    }
-	}
-	printf("%d.%02d$\n",total/100,total%100);	
+int main()
+{
+    int t;
+    cin >> t;
+    while (t--)
+    {
+        int m, k, aux;
+        cin >> m;
+        char auxc;
+        unordered_map<char, int> pay;
+        while (m--)
+        {
+            cin >> auxc >> aux;
+            pay[auxc] = aux;
+        }
+        cin >> k;
+
+        string line;
+        getline(cin, line);
+
+        long long totalcents = 0;
+        while (k--)
+        {
+            getline(cin, line);
+            for (char c : line)
+            {
+                if (pay.count(c) >= 1)
+                {
+                    totalcents += pay[c];
+                }
+            }
+        }
+        printf("%lld.%02lld$\n", totalcents / 100, totalcents % 100);
     }
     return 0;
 }

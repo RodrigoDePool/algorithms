@@ -1,0 +1,26 @@
+CP3:
+
+- usar los typedefs
+- Buscar bitset
+- Ver todas las operaciones de bitmask
+   (hay algunas poco intuitivas, por ejemplo, quedarse con el primer bit por la
+    derecha a 1)
+- deque (cola con los dos extremos disponibles, pop_back(), push_back(),
+   pop_front(), ...)
+- Balanced Binary Search Tree,bst, (map, set): findMin, findMax, sucessor,
+   predecessor, search, insert, delete
+- Heap, priority_queue: ExtractMax(), Insert
+- Revisar qué  es partial_sort en algorithms
+- Grafos: Pros y contras  de implementaciones
+    1.- Matriz de adyacencia: Espacio (O(vertices^2)), bueno para Grafos
+      pequeños y densos. Si el grafo tiene más de 1000 vertices, es inviable.
+      Se tarda V en comprobar todos los vecinos de un vertice (malo malo)
+    2.- Lista de adyacencia (vector<vii>(vertices)): A cada vertice le corresponde
+      una lista de pares (vertice, peso) que corresponde con la arista.
+    3.- Lista de aristas (vector<pair<int, ii>>): Se guardan normalmente
+      ordenados por peso, bueno para Kruskals.
+- Union find disjoint sets (ufds): Guarda conjuntos disjuntos. Podemos
+   comprobar pertenencia de un elemento a un conjunto en O(1) (o si dos elementos
+   pertenecen al mismo conjunto o unir dos conjuntos en uno).
+   Implementacion! Dos vectores vi parents y vi ranks (ver libro)
+- Segment Tree:
