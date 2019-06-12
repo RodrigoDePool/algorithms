@@ -7,20 +7,15 @@
 using namespace std;
 
 int l, c, n, i;
-string line;
+// string line;
 stringstream ss;
 bitset<3000> bs;
 
 int main(){
-	getline(cin, line);
-
-	while(!line.empty()){
-		ss.clear();
-		ss.str(line);
+	while(cin >> n){
 		bs.reset();
 
-		ss >> n;
-		ss >> l;
+		cin >> l;
 
 		if (n == 1){
 			cout << "Jolly" << endl;
@@ -29,14 +24,14 @@ int main(){
 		
 		i = n-1;
 		while(i--){
-			ss >> c;
+			cin >> c;
+			if (abs(c-l) >= n || c == l) break;
 			bs.set(abs(c-l)-1);
 			l = c;
 		}
 
 		if (bs == bitset<3000>((1 << n-1)-1)) cout << "Jolly" << endl;
 		else cout << "Not jolly" << endl;
-		getline(cin, line);
 	}
 
 	return 0;
