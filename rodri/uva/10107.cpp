@@ -1,41 +1,42 @@
 #include <queue>
-#include <vector>
 #include <iostream>
 using namespace std;
-
 int main(){
-    long x, sol, aux;
-    priority_queue<long> lowq;
-    priority_queue<long, vector<long>, greater<long>> highq;
+  int n;
+  priority_queue<int> lowpq;
+  priority_queue<int> highpq;
 
-    cin >> x;
-    lowq.push(x);
-    cout << x << endl;
-    while(cin >> x){
-        if(x<=lowq.top()){
-            lowq.push(x);
-            if(lowq.size()>highq.size()+1){
-                aux = lowq.top();
-                lowq.pop();
-                highq.push(aux);
-            }
-        }else{
-            highq.push(x);
-            if(highq.size()>lowq.size()+1){
-                aux = highq.top();
-                highq.pop();
-                lowq.push(aux);
-            }
-        }
-        
-        if(lowq.size()==highq.size()){
-            sol = (lowq.top()+highq.top())/2;
-            cout << sol << endl;
-        }else if(lowq.size()>highq.size()){
-            cout << lowq.top() << endl;
-        }else{
-            cout << highq.top() << endl;
-        }
+  int median;
+  cin >> n;
+  median=n;
+  cout << median<< endl;
+  int turn=1;
+
+  while(!cin.eof() && cin >> n){
+    turn++;
+    if(turn%2==0){
+      if(median<n){
+        lowpq.push(median);
+        highpq.push(-n);
+      }else{
+        lowpq.push(n);
+        highpq.push(-median);
+      }
+      median=(lowpq.top()+(-highpq.top()))/2;
+    }else{
+      if(n>lowpq.top() && n < -highpq.top()){
+        median=n;
+      }else if(n<lowpq.top()){
+        median=lowpq.top();
+        lowpq.pop();
+        lowpq.push(n);
+      }else{
+        median=-highpq.top();
+        highpq.pop();
+        highpq.push(-n);
+      }
     }
-    return 0;
+    cout << median << endl;
+  }
+  return 0;
 }
