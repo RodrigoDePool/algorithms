@@ -19,8 +19,25 @@ CP3:
       una lista de pares (vertice, peso) que corresponde con la arista.
     3.- Lista de aristas (vector<pair<int, ii>>): Se guardan normalmente
       ordenados por peso, bueno para Kruskals.
+
 - Union find disjoint sets (ufds): Guarda conjuntos disjuntos. Podemos
    comprobar pertenencia de un elemento a un conjunto en O(1) (o si dos elementos
    pertenecen al mismo conjunto o unir dos conjuntos en uno).
    Implementacion! Dos vectores vi parents y vi ranks (ver libro)
-- Segment Tree:
+
+- Segment Tree: Resuelve el problema de Range Minimum Query (dado un rango de
+   índices indica el índice con el menor valor en ese rango), solo es útil cuando
+   el array se está modificando constantemente. Se construye en tiempo O(n),
+   requiere de espacio O(4n), se modifica en tiempo O(logn), se responde a una
+   consulta en tiempo O(logn). Es eficiente SOLO cuando es un conjunto grande
+   de consultas y modificaciones, en caso contrario, probablemente sea un
+   problema de DP. Implementación en el libro! (incompleta, falta un método
+   para modificar un valor del array).
+
+- Árbol binario indexado (Fenwick): Resuelve eficientemente el problema Range
+   Sum Query. Veamos un ejemplo, tenemos un array de M datos que pueden tomar
+   valores en [a,b], cada valor tendrá una frecuencia, entonces nos podemos
+   preguntar cuántos datos hay que tengan una frecuencia en un determinado
+   rango [c,d] (contenido en [a,b]). Este problema se resuelve eficientemente
+   con un fenwick Tree en caso de que haya MUCHAS modificaciones en las
+   frecuencias y haya muchas queries. La implementación está en el libro!
